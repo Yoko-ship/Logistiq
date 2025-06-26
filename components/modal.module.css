@@ -1,0 +1,43 @@
+.dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    z-index: 120;
+    transform: translate(-50%,-50%);
+    outline: none;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: #4387D0;
+}
+.close{
+    border: none;
+    background: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.lists{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    color: white;
+}
+.lists button{
+    padding: 0.3rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 10px;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+.grid{
+    border: 1px solid #12d;
+    text-align: center;
+}
+.backdrop{
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+}
