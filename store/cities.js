@@ -4,7 +4,8 @@ export const cityHanlder = createSlice({
     name:"city",
     initialState:{
         road:[],
-        money:0
+        money:0,
+        transport:[]
     },
     reducers:{
         addRoad(state,action){
@@ -12,8 +13,11 @@ export const cityHanlder = createSlice({
         },
         addMoney(state,action){
             state.money += action.payload
+        },
+        addTransport(state,action){
+            state.transport = action.payload
         }
     }
 }) 
-export const { addRoad,addMoney} = cityHanlder.actions
+export const { addRoad,addMoney, addTransport} = cityHanlder.actions
 export default cityHanlder.reducer

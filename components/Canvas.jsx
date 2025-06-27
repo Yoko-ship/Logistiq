@@ -5,6 +5,7 @@ import classes from "./map.module.css";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { addRoad } from "@/store/cities";
+import Transport from "./Transport";
 
 function Canvas() {
   const dispatch = useDispatch();
@@ -52,6 +53,8 @@ function Canvas() {
     }
   }, [selectedCities]);
 
+
+
   return (
     <div className={classes.map}>
       <svg className={classes.road}>
@@ -87,6 +90,7 @@ function Canvas() {
           onClick={() => handleSelected(city)}
         ></div>
       ))}
+      <Transport/>
       <Modal />
     </div>
   );

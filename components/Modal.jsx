@@ -5,7 +5,8 @@ import classes from "./modal.module.css"
 import { routes } from '@/data/orders'
 import { useSelector,useDispatch } from 'react-redux'
 import { toast,ToastContainer } from 'react-toastify'
-import { addMoney } from '@/store/cities'
+import { addMoney,addTransport } from '@/store/cities'
+import { transports } from '@/data/cities'
 import 'react-toastify/dist/ReactToastify.css'
 function Modal({open,setIsOpen}) {
     const [mounted,setMounter] = useState(false)
@@ -22,9 +23,20 @@ function Modal({open,setIsOpen}) {
         const selectedById = routes.filter(route => route.id === id)
         const routeFrom = selectedById[0].from
         const routeTo = selectedById[0].to
+        const roadCoordinate = road.find(route => route.name === routeFrom && route.name2 === routeTo)
+        if(roadCoordinate){
+            const transported = transports[0]
+            Object.assign(transported,{
+                x1:roadCoordinate.x1,
+                y1:roadCoordinate.y1,
+                x2:roadCoordinate.x2,
+                y2:roadCoordinate.y2
+            })
+            //TODO here
+            dispatch(addTransport(transported))
+        }
         const isThereRoadFrom = road.find(route => route.name === routeFrom) !== undefined
         const isThereRoadTo = road.find(route => route.name2 === routeTo) !== undefined
-        console.log(isThereRoadFrom,isThereRoadTo)
         if(!isThereRoadFrom || !isThereRoadTo){
             toast.error("Маршрут не соответствует заказу")
         }
